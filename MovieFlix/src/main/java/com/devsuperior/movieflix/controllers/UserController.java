@@ -23,4 +23,11 @@ public class UserController {
 		UserDTO dto = service.getProfile();
 		return ResponseEntity.ok(dto);
 	}
+
+	@PreAuthorize("hasAnyRole('VISITOR' , 'MEMBER')")
+    @GetMapping(value = "/me")
+    public ResponseEntity<UserDTO> findMe(){
+        UserDTO dto = service.findMe();
+        return ResponseEntity.ok().body(dto);
+    } 
 }

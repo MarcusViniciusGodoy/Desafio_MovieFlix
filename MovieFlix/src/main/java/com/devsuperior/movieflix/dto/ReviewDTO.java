@@ -7,7 +7,7 @@ public class ReviewDTO {
 
     private Long id;
 
-    @NotBlank(message = "Campo requerido")
+   	@NotBlank(message = "Texto não pode ser vazio")
     private String text;
 
     @NotNull(message = "Campo requerido")
