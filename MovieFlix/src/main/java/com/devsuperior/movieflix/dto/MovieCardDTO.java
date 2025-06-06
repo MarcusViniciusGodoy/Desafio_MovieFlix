@@ -13,11 +13,11 @@ public class MovieCardDTO {
     public MovieCardDTO(){}
 
     public MovieCardDTO(Movie entity) {
-    this.id = entity.getId();
-    this.title = entity.getTitle();
-    this.subTitle = entity.getSubTitle();
-    this.year = entity.getYear();
-    this.imgUrl = entity.getImgUrl();
+        this.id = entity.getId();
+        this.title = entity.getTitle();
+        this.subTitle = entity.getSubTitle();
+        this.year = entity.getYear();
+        this.imgUrl = entity.getImgUrl();
     }
 
     public Long getId() {

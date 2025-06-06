@@ -20,12 +20,12 @@ import jakarta.validation.Valid;
 public class ReviewController {
 
     @Autowired
-    private ReviewService reviewService;
+    private ReviewService service;
 
     @PostMapping
     @PreAuthorize("hasRole('MEMBER')")
     public ResponseEntity<ReviewDTO> insert(@Valid @RequestBody ReviewInsertDTO dto) {
-        ReviewDTO result = reviewService.insert(dto);
+        ReviewDTO result = service.insert(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(result);
     }
 }

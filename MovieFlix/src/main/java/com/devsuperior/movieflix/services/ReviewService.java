@@ -16,8 +16,8 @@ import com.devsuperior.movieflix.services.exceptions.ResourceNotFoundException;
 @Service
 public class ReviewService {
 
-     @Autowired
-    private ReviewRepository reviewRepository;
+    @Autowired
+    private ReviewRepository repository;
 
     @Autowired
     private MovieRepository movieRepository;
@@ -37,7 +37,8 @@ public class ReviewService {
         review.setMovie(movie);
         review.setUser(user);
 
-        review = reviewRepository.save(review);
+        review = repository.save(review);
         return new ReviewDTO(review);
     }
+
 }
