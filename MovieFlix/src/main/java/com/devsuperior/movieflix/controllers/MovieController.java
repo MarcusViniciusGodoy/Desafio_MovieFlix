@@ -34,7 +34,7 @@ public class MovieController {
         return ResponseEntity.ok().body(dto);
     } 
 
-    @GetMapping("/{id}/reviews")
+    @GetMapping("/{movieId}/reviews")
     public ResponseEntity<List<ReviewDTO>> findReviewsByMovie(@PathVariable Long movieId) {
         List<ReviewDTO> list = service.findByMovieId(movieId);
         return ResponseEntity.ok(list);
