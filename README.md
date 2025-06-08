@@ -1,7 +1,7 @@
 # Desafio MovieFlix
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/MarcusViniciusGodoy/Desafio_MovieFlix/blob/main/LICENSE)
 
-# Sobre o projetoAdd commentMore actions
+# Sobre o projeto
 
 Sexto desafio do curso Java Spring Professional, cursos organizado pela [DevSuperior](https://devsuperior.com "Site da DevSuperior").
 
