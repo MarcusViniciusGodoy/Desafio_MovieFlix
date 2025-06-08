@@ -12,6 +12,9 @@ import com.devsuperior.movieflix.entities.Movie;
 @Repository
 public interface MovieRepository extends JpaRepository<Movie, Long> {
 
-    @Query("SELECT m FROM Movie m WHERE m.genre.id = :genreId")
-    Page<Movie> findByGenreId(@Param("genreId") Long genreId, Pageable pageable);
+    @Query("SELECT m FROM Movie m WHERE m.genre.id = :genreId ORDER BY m.title")
+    Page<Movie> findByGenre(@Param("genreId") Long genreId, Pageable pageable);
+
+    @Query("SELECT m FROM Movie m ORDER BY m.title")
+    Page<Movie> findAllOrdered(Pageable pageable);
 }

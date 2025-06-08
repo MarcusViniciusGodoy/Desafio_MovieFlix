@@ -27,11 +27,16 @@ public class MovieService {
     @Autowired
     private ReviewRepository reviewRepository;
 
+    @Transactional(readOnly = true)
     public Page<MovieCardDTO> findAllPaged(Long genreId, Pageable pageable) {
-        Page<Movie> list = (genreId == 0)
-            ? repository.findAll(pageable)
-            : repository.findByGenreId(genreId, pageable);
-        return list.map(MovieCardDTO::new);
+        Page<Movie> page;
+    
+        if (genreId == 0) {
+            page = repository.findAllOrdered(pageable);
+        } else {
+            page = repository.findByGenre(genreId, pageable); 
+        }
+        return page.map(MovieCardDTO::new);
     }
 
     @Transactional(readOnly = true)
