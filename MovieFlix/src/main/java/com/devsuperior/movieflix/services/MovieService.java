@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.devsuperior.movieflix.dto.MovieCardDTO;
+import com.devsuperior.movieflix.dto.MovieDetailsDTO;
 import com.devsuperior.movieflix.dto.ReviewDTO;
 import com.devsuperior.movieflix.entities.Movie;
 import com.devsuperior.movieflix.entities.Review;
@@ -26,17 +27,18 @@ public class MovieService {
     @Autowired
     private ReviewRepository reviewRepository;
 
-    @Transactional(readOnly = true)
-    public Page<MovieCardDTO> findAllPaged(Pageable pageable){
-        Page<Movie> list = repository.findAll(pageable);
+    public Page<MovieCardDTO> findAllPaged(Long genreId, Pageable pageable) {
+        Page<Movie> list = (genreId == 0)
+            ? repository.findAll(pageable)
+            : repository.findByGenreId(genreId, pageable);
         return list.map(MovieCardDTO::new);
     }
 
     @Transactional(readOnly = true)
-    public MovieCardDTO findById(Long id) {
+    public MovieDetailsDTO findById(Long id) {
         Optional<Movie> obj = repository.findById(id);
         Movie entity = obj.orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
-        return new MovieCardDTO(entity);
+        return new MovieDetailsDTO(entity);
     }
 
     @Transactional(readOnly = true)

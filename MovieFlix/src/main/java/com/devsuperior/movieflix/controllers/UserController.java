@@ -17,15 +17,15 @@ public class UserController {
 	@Autowired
 	private UserService service;
 	
-    @PreAuthorize("hasAnyRole('VISITOR', 'MEMBER')")
 	@GetMapping(value = "/profile")
+    @PreAuthorize("hasAnyRole('ROLE_VISITOR', 'ROLE_MEMBER')")
 	public ResponseEntity<UserDTO> getProfile() {
 		UserDTO dto = service.getProfile();
 		return ResponseEntity.ok(dto);
 	}
 
-	@PreAuthorize("hasAnyRole('VISITOR' , 'MEMBER')")
     @GetMapping(value = "/me")
+	@PreAuthorize("hasAnyRole('ROLE_VISITOR' , 'ROLE_MEMBER')")
     public ResponseEntity<UserDTO> findMe(){
         UserDTO dto = service.findMe();
         return ResponseEntity.ok().body(dto);
